@@ -1,0 +1,1 @@
+before deploying the project, please run the script(script.sql) for creating the table and adding mock data
