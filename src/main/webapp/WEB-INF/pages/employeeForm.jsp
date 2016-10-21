@@ -81,13 +81,13 @@
         var age = $('#age').val();
 
 
-        if (name.length == 0) {
+        if (name.length == 0 || name.length >25) {
             alert('Please enter name');
             $('#name').focus();
             return false;
         }
 
-        if (age <= 0 || !isFinite(age)) {
+        if (age <= 0 || age >200 || !isFinite(age)) {
             alert('Please enter proper age');
             $('#age').focus();
             return false;
