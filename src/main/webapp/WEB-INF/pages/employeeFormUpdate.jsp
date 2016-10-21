@@ -47,6 +47,14 @@
                     </div>
                 </div>
 
+
+                <div class="form-group">
+                    <div class="control-label col-xs-3"><form:label path="createdDate">CreatedDate</form:label></div>
+                    <div class="col-xs-6">
+                        <form:input disabled="true" cssClass="form-control" path="createdDate" value="${employeeObject.createdDate}"/>
+                    </div>
+                </div>
+
                 <div class="form-group">
                     <div class="control-label col-xs-3"><form:label path="admin">IsAdmin</form:label></div>
                     <div class="col-xs-6">

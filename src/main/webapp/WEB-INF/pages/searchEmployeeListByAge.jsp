@@ -51,7 +51,7 @@
                         <div class="row">
                             <div class="col-md-8">
                                 <div class="col-md-6">Search Employee by Age:</div>
-                                <div class="col-md-6"><input type="number" min="1" step="1" name="searchAge"
+                                <div class="col-md-6"><input type="number" min="1" step="1" name="searchAge" value="${searchAge}"
                                                              id="searchAge"></div>
                             </div>
                             <div class="col-md-4"><input class="btn btn-success" type='submit' value='Search'/></div>
@@ -74,36 +74,11 @@
                     </div>
                 </form>
 
-                <form align="right">
-                    <div id="pagination">
-                        <c:url value="//searchEmployeeByAge?searchAge=${searchAge}" var="prev">
-                            <c:param name="page" value="${page-1}"/>
-                        </c:url>
-                        <c:if test="${page > 1}">
-                            <a href="<c:out value="${prev}" />" class="pn prev">Prev</a>
-                        </c:if>
-                        <c:forEach begin="1" end="${maxPages}" step="1" varStatus="i">
-                            <c:choose>
-                                <c:when test="${page == i.index}">
-                                    <span>${i.index}</span>
-                                </c:when>
-                                <c:otherwise>
-                                    <c:url value="//searchEmployeeByAge?searchAge=${searchAge}" var="url">
-                                        <c:param name="page" value="${i.index}"/>
-                                    </c:url>
-                                    <a href='<c:out value="${url}" />'>${i.index}</a>
-                                </c:otherwise>
-                            </c:choose>
-                        </c:forEach>
-                        <c:url value="//searchEmployeeByAge?searchAge=${searchAge}" var="next">
-                            <c:param name="page" value="${page + 1}"/>
-                        </c:url>
-                        <c:if test="${page + 1 <= maxPages}">
-                            <a href='<c:out value="${next}" />' class="pn next">Next</a>
-                        </c:if>
+                <div class="col-xs-8">
+                    <div class="row">
+                        <p></p>
                     </div>
-                </form>
-
+                </div>
 
                 <table class="table table-hover table-bordered">
                     <thead style="background-color: #bce8f1;">
@@ -133,6 +108,36 @@
                     </c:forEach>
                     </tbody>
                 </table>
+
+
+                <div id="pagination" align="right">
+                    <c:url value="//searchEmployeeByAge?searchAge=${searchAge}" var="prev">
+                        <c:param name="page" value="${page-1}"/>
+                    </c:url>
+                    <c:if test="${page > 1}">
+                        <a href="<c:out value="${prev}" />" class="pn prev">Prev</a>
+                    </c:if>
+                    <c:forEach begin="1" end="${maxPages}" step="1" varStatus="i">
+                        <c:choose>
+                            <c:when test="${page == i.index}">
+                                <span>${i.index}</span>
+                            </c:when>
+                            <c:otherwise>
+                                <c:url value="//searchEmployeeByAge?searchAge=${searchAge}" var="url">
+                                    <c:param name="page" value="${i.index}"/>
+                                </c:url>
+                                <a href='<c:out value="${url}" />'>${i.index}</a>
+                            </c:otherwise>
+                        </c:choose>
+                    </c:forEach>
+                    <c:url value="//searchEmployeeByAge?searchAge=${searchAge}" var="next">
+                        <c:param name="page" value="${page + 1}"/>
+                    </c:url>
+                    <c:if test="${page + 1 <= maxPages}">
+                        <a href='<c:out value="${next}" />' class="pn next">Next</a>
+                    </c:if>
+                </div>
+
 
             </c:if>
         </div>

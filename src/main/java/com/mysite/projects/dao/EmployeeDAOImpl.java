@@ -51,10 +51,11 @@ public class EmployeeDAOImpl implements EmployeeDAO {
     @Override
     public List<Employee> getAllEmployees(String employeeName) {
 
-        if (employeeName.length() == 0 || employeeName.equals("")){
-            return getAllEmployees();
-        }
         List<Employee> filtered = new ArrayList<>();
+        if (employeeName.length() == 0 || employeeName.equals("")){
+            return filtered;
+        }
+
         for (Employee employee : getAllEmployees()) {
             if (employee.getName().toLowerCase().equals(employeeName.toLowerCase())){
                 filtered.add(employee);
@@ -65,8 +66,8 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 
     @Override
     public List<Employee> getAllEmployees(int employeeAge) {
-        if (employeeAge==0) return getAllEmployees();
         List<Employee> filtered = new ArrayList<>();
+        if (employeeAge==0) return filtered;
         for (Employee employee : getAllEmployees()) {
             if (employee.getAge() == employeeAge){
                 filtered.add(employee);
