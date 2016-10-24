@@ -9,8 +9,11 @@ public interface EmployeeService {
         Employee updateEmployee(Employee employee);
         void deleteEmployee(int id);
         List<Employee> getAllEmployees();
-        List<Employee> getAllEmployees(String employeeName);
-        List<Employee> getAllEmployees(int employeeAge);
-        List<Employee> getAllEmployees(Boolean employeeAdmin);
+//        List<Employee> getAllEmployees(String employeeName);
+//        List<Employee> getAllEmployees(int employeeAge);
+//        List<Employee> getAllEmployees(Boolean employeeAdmin);
+
+        List<Employee> getAllEmployees(String employeeName, Integer employeeAge, Boolean employeeAdmin);
+
         Employee getEmployee(int id);
 }

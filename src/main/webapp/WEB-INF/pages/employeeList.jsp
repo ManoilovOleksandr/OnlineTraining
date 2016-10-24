@@ -30,47 +30,44 @@
             </c:if>
             <c:if test="${not empty employeeList}">
 
-
+                <div class="col-md-6">Search Employee:</div>
                 <form action="searchEmployee">
-                    <div class="col-xs-8">
+                    <div class="col-xs-10">
                         <div class="row">
-                            <div class="col-md-8">
-                                <div class="col-md-6">Search Employee by Name:</div>
-                                <div class="col-md-6"><input type="text" name="searchName" id="searchName"></div>
+                            <div class="col-md-10">
+                                <div class="col-md-2"></div>
+                                <div class="col-md-2">enter name:</div>
+                                <div class="col-md-3"><input type="text" name="searchName" id="searchName"></div>
                             </div>
-                            <div class="col-md-4"><input class="btn btn-success" type='submit' value='Search'/></div>
-                            <div class="col-md-4"></div>
-                            <br>
                         </div>
                     </div>
-                </form>
-
-                <form action="searchEmployeeByAge">
-                    <div class="col-xs-8">
+                    <div class="col-xs-10" style="margin-top:3px;">
                         <div class="row">
-                            <div class="col-md-8">
-                                <div class="col-md-6">Search Employee by Age:</div>
-                                <div class="col-md-6"><input type="number" min="1" step="1" name="searchAge" id="searchAge"></div>
+                            <div class="col-md-10">
+                                <div class="col-md-2"></div>
+                                <div class="col-md-2">enter age:</div>
+                                <div class="col-md-3"><input type="number" min="1" step="1" name="searchAge"
+                                                             id="searchAge"></div>
                             </div>
-                            <div class="col-md-4"><input class="btn btn-success" type='submit' value='Search'/></div>
-                            <div class="col-md-4"></div>
                         </div>
                     </div>
-                </form>
-
-                <form action="searchEmployeeByIsAdmin">
-                    <div class="col-xs-8">
+                    <div class="col-xs-10" style="margin-top:3px;">
                         <div class="row">
-                            <div class="col-md-8">
-                                <div class="col-md-6">Search Employee by IsAdmin:</div>
-                                <div class="col-md-6"><input type="checkbox" name="searchIsAdmin" id="searchIsAdmin">
+                            <div class="col-md-10">
+                                <div class="col-md-2"></div>
+                                <div class="col-md-2">is admin?:</div>
+                                <div class="col-md-3" align="center">
+                                    <input type="radio" name="searchIsAdmin" value="true"> Yes
+                                    <input type="radio" name="searchIsAdmin" value="false"> No
+                                    <input type="radio" name="searchIsAdmin" value="" checked> All
                                 </div>
+                                <div class="col-md-4" align="center"><input class="btn btn-success" type='submit'
+                                                                            value='Search'/></div>
                             </div>
-                            <div class="col-md-4"><input class="btn btn-success" type='submit' value='Search'/></div>
-                            <div class="col-md-4"></div>
                         </div>
                     </div>
                 </form>
+
 
                 <div class="col-xs-8">
                     <div class="row">

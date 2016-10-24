@@ -80,12 +80,17 @@ public class EmployeeController {
     }
 
     @RequestMapping("searchEmployee")
-    public ModelAndView searchEmployee(@RequestParam("searchName") String searchName, @RequestParam(required = false) Integer page) {
-        logger.info("Searching the Employee. Employee Names: " + searchName);
+    public ModelAndView searchEmployee(@RequestParam(value = "searchName") String searchName,
+                                       @RequestParam(value = "searchAge") Integer searchAge,
+                                       @RequestParam(value = "searchIsAdmin") Boolean searchIsAdmin,
+                                       @RequestParam(required = false) Integer page) {
+        logger.error("\n"   + "Searching the Employee: " + "\n"   +
+                                             "Employee Names: " + searchName + "\n" +
+                                             "Employee Age: " + searchAge + "\n" +
+                                             "Employee IsAdmin: " + searchIsAdmin);
 
-        ModelAndView modelAndView = new ModelAndView("searchEmployeeListByName");
-
-        List<Employee> employeeList = employeeService.getAllEmployees(searchName);
+        ModelAndView modelAndView = new ModelAndView("searchEmployee");
+        List<Employee> employeeList = employeeService.getAllEmployees(searchName, searchAge, searchIsAdmin);
         PagedListHolder<Employee> pagedListHolder = new PagedListHolder<>(employeeList);
         pagedListHolder.setPageSize(10);
         modelAndView.addObject("maxPages", pagedListHolder.getPageCount());
@@ -97,64 +102,95 @@ public class EmployeeController {
             pagedListHolder.setPage(0);
             modelAndView.addObject("employeeList", pagedListHolder.getPageList());
             modelAndView.addObject("searchName", searchName);
+            modelAndView.addObject("searchAge", searchAge);
+            modelAndView.addObject("searchIsAdmin", searchIsAdmin);
         } else if (page <= pagedListHolder.getPageCount()) {
             pagedListHolder.setPage(page - 1);
             modelAndView.addObject("employeeList", pagedListHolder.getPageList());
             modelAndView.addObject("searchName", searchName);
-        }
-        return modelAndView;
-    }
-
-    @RequestMapping("searchEmployeeByAge")
-    public ModelAndView searchEmployee(@RequestParam(value = "searchAge", defaultValue = "0") int searchAge, @RequestParam(required = false) Integer page) {
-        logger.info("Searching the Employee. Employee Age: " + searchAge);
-
-        ModelAndView modelAndView = new ModelAndView("searchEmployeeListByAge");
-
-        List<Employee> employeeList = employeeService.getAllEmployees(searchAge);
-        PagedListHolder<Employee> pagedListHolder = new PagedListHolder<>(employeeList);
-        pagedListHolder.setPageSize(10);
-        modelAndView.addObject("maxPages", pagedListHolder.getPageCount());
-
-        if (page == null || page < 1 || page > pagedListHolder.getPageCount()) page = 1;
-
-        modelAndView.addObject("page", page);
-        if (page == null || page < 1 || page > pagedListHolder.getPageCount()) {
-            pagedListHolder.setPage(0);
-            modelAndView.addObject("employeeList", pagedListHolder.getPageList());
             modelAndView.addObject("searchAge", searchAge);
-        } else if (page <= pagedListHolder.getPageCount()) {
-            pagedListHolder.setPage(page - 1);
-            modelAndView.addObject("employeeList", pagedListHolder.getPageList());
-            modelAndView.addObject("searchAge", searchAge);
-        }
-        return modelAndView;
-
-    }
-
-    @RequestMapping("searchEmployeeByIsAdmin")
-    public ModelAndView searchEmployee(@RequestParam(value = "searchIsAdmin", required = false) Boolean searchIsAdmin, @RequestParam(required = false) Integer page) {
-        logger.info("Searching the Employee. Employee IsAdmin: " + searchIsAdmin);
-        ModelAndView modelAndView = new ModelAndView("searchEmployeeListByIsAdmin");
-
-        List<Employee> employeeList = employeeService.getAllEmployees(searchIsAdmin);
-        PagedListHolder<Employee> pagedListHolder = new PagedListHolder<>(employeeList);
-        pagedListHolder.setPageSize(10);
-        modelAndView.addObject("maxPages", pagedListHolder.getPageCount());
-
-        if (page == null || page < 1 || page > pagedListHolder.getPageCount()) page = 1;
-
-        modelAndView.addObject("page", page);
-        if (page == null || page < 1 || page > pagedListHolder.getPageCount()) {
-            pagedListHolder.setPage(0);
-            modelAndView.addObject("employeeList", pagedListHolder.getPageList());
-            modelAndView.addObject("searchIsAdmin", searchIsAdmin);
-        } else if (page <= pagedListHolder.getPageCount()) {
-            pagedListHolder.setPage(page - 1);
-            modelAndView.addObject("employeeList", pagedListHolder.getPageList());
             modelAndView.addObject("searchIsAdmin", searchIsAdmin);
         }
         return modelAndView;
     }
+
+
+    //    @RequestMapping("searchEmployee")
+//    public ModelAndView searchEmployee(@RequestParam("searchName") String searchName, @RequestParam(required = false) Integer page) {
+//        logger.info("Searching the Employee. Employee Names: " + searchName);
+//
+//        ModelAndView modelAndView = new ModelAndView("searchEmployeeListByName");
+//
+//        List<Employee> employeeList = employeeService.getAllEmployees(searchName);
+//        PagedListHolder<Employee> pagedListHolder = new PagedListHolder<>(employeeList);
+//        pagedListHolder.setPageSize(10);
+//        modelAndView.addObject("maxPages", pagedListHolder.getPageCount());
+//
+//        if (page == null || page < 1 || page > pagedListHolder.getPageCount()) page = 1;
+//
+//        modelAndView.addObject("page", page);
+//        if (page == null || page < 1 || page > pagedListHolder.getPageCount()) {
+//            pagedListHolder.setPage(0);
+//            modelAndView.addObject("employeeList", pagedListHolder.getPageList());
+//            modelAndView.addObject("searchName", searchName);
+//        } else if (page <= pagedListHolder.getPageCount()) {
+//            pagedListHolder.setPage(page - 1);
+//            modelAndView.addObject("employeeList", pagedListHolder.getPageList());
+//            modelAndView.addObject("searchName", searchName);
+//        }
+//        return modelAndView;
+//    }
+
+//    @RequestMapping("searchEmployeeByAge")
+//    public ModelAndView searchEmployee(@RequestParam(value = "searchAge", defaultValue = "0") int searchAge, @RequestParam(required = false) Integer page) {
+//        logger.info("Searching the Employee. Employee Age: " + searchAge);
+//
+//        ModelAndView modelAndView = new ModelAndView("searchEmployeeListByAge");
+//
+//        List<Employee> employeeList = employeeService.getAllEmployees(searchAge);
+//        PagedListHolder<Employee> pagedListHolder = new PagedListHolder<>(employeeList);
+//        pagedListHolder.setPageSize(10);
+//        modelAndView.addObject("maxPages", pagedListHolder.getPageCount());
+//
+//        if (page == null || page < 1 || page > pagedListHolder.getPageCount()) page = 1;
+//
+//        modelAndView.addObject("page", page);
+//        if (page == null || page < 1 || page > pagedListHolder.getPageCount()) {
+//            pagedListHolder.setPage(0);
+//            modelAndView.addObject("employeeList", pagedListHolder.getPageList());
+//            modelAndView.addObject("searchAge", searchAge);
+//        } else if (page <= pagedListHolder.getPageCount()) {
+//            pagedListHolder.setPage(page - 1);
+//            modelAndView.addObject("employeeList", pagedListHolder.getPageList());
+//            modelAndView.addObject("searchAge", searchAge);
+//        }
+//        return modelAndView;
+//
+//    }
+//
+//    @RequestMapping("searchEmployeeByIsAdmin")
+//    public ModelAndView searchEmployee(@RequestParam(value = "searchIsAdmin", required = false) Boolean searchIsAdmin, @RequestParam(required = false) Integer page) {
+//        logger.info("Searching the Employee. Employee IsAdmin: " + searchIsAdmin);
+//        ModelAndView modelAndView = new ModelAndView("searchEmployeeListByIsAdmin");
+//
+//        List<Employee> employeeList = employeeService.getAllEmployees(searchIsAdmin);
+//        PagedListHolder<Employee> pagedListHolder = new PagedListHolder<>(employeeList);
+//        pagedListHolder.setPageSize(10);
+//        modelAndView.addObject("maxPages", pagedListHolder.getPageCount());
+//
+//        if (page == null || page < 1 || page > pagedListHolder.getPageCount()) page = 1;
+//
+//        modelAndView.addObject("page", page);
+//        if (page == null || page < 1 || page > pagedListHolder.getPageCount()) {
+//            pagedListHolder.setPage(0);
+//            modelAndView.addObject("employeeList", pagedListHolder.getPageList());
+//            modelAndView.addObject("searchIsAdmin", searchIsAdmin);
+//        } else if (page <= pagedListHolder.getPageCount()) {
+//            pagedListHolder.setPage(page - 1);
+//            modelAndView.addObject("employeeList", pagedListHolder.getPageList());
+//            modelAndView.addObject("searchIsAdmin", searchIsAdmin);
+//        }
+//        return modelAndView;
+//    }
 
 }
