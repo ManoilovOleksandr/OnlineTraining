@@ -44,23 +44,8 @@ public class EmployeeServiceImpl implements EmployeeService {
         return employeeDAO.getEmployee(id);
     }
 
-//    @Override
-//    public List<Employee> getAllEmployees(String employeeName) {
-//        return employeeDAO.getAllEmployees(employeeName);
-//    }
-//
-//    @Override
-//    public List<Employee> getAllEmployees(int employeeAge) {
-//        return employeeDAO.getAllEmployees(employeeAge);
-//    }
-//
-//    @Override
-//    public List<Employee> getAllEmployees(Boolean employeeAdmin) {
-//        return employeeDAO.getAllEmployees(employeeAdmin);
-//    }
-
     @Override
     public List<Employee> getAllEmployees(String employeeName, Integer employeeAge, Boolean employeeAdmin) {
-        return employeeDAO.getAllEmployees(employeeName,employeeAge,employeeAdmin);
+        return employeeDAO.getAllEmployees(employeeName, employeeAge, employeeAdmin);
     }
 }

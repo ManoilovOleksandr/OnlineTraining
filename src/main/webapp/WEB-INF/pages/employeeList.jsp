@@ -7,7 +7,6 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <style type="text/css">
         .myrow-container {
@@ -63,7 +62,6 @@
                 </div>
             </form>
 
-
             <c:if test="${empty employeeList}">
                 <div class="col-xs-10" style="margin-top:20px;">
                     <div class="row">
@@ -74,7 +72,6 @@
                 </div>
             </c:if>
             <c:if test="${not empty employeeList}">
-
 
                 <table class="table table-hover table-bordered">
                     <thead style="background-color: #bce8f1;">
@@ -104,7 +101,6 @@
                     </c:forEach>
                     </tbody>
                 </table>
-
 
                 <div class="col-md-11" align="right">
                     <div class="row">
@@ -137,8 +133,6 @@
                         </div>
                     </div>
                 </div>
-
-
             </c:if>
         </div>
     </div>

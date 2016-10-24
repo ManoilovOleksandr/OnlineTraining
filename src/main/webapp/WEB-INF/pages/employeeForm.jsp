@@ -75,27 +75,21 @@
 
 <script type="text/javascript">
     function submitEmployeeForm() {
-
         // getting the employee form values
         var name = $('#name').val().trim();
         var age = $('#age').val();
-
-
         if (name.length == 0 || name.length >25) {
             alert('Please enter name');
             $('#name').focus();
             return false;
         }
-
         if (age <= 0 || age >200 || !isFinite(age)) {
             alert('Please enter proper age');
             $('#age').focus();
             return false;
         }
-
         return true;
     };
-
 </script>
 </body>
 </html>

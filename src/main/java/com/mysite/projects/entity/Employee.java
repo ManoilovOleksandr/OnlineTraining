@@ -20,8 +20,8 @@ public class Employee implements Serializable {
 
     @Id
     @Column(name = "id", columnDefinition = "INT(8)")
-    @GenericGenerator(name="my_employee_gen" , strategy="increment")
-    @GeneratedValue(generator="my_employee_gen")
+    @GenericGenerator(name = "my_employee_gen", strategy = "increment")
+    @GeneratedValue(generator = "my_employee_gen")
 
     public int getId() {
         return id;
@@ -32,7 +32,7 @@ public class Employee implements Serializable {
     }
 
 
-    @Temporal(TemporalType.DATE )
+    @Temporal(TemporalType.DATE)
     @Column(name = "created_date")
     public Date getCreatedDate() {
         return createdDate;

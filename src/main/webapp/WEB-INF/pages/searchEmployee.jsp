@@ -55,7 +55,6 @@
                             <div class="col-md-2"></div>
                             <div class="col-md-2">is admin?:</div>
                             <div class="col-md-3" align="center">
-                                <%--<c:if test="${searchIsAdmin}">checked</c:if>--%>
                                 <input type="radio" name="searchIsAdmin" value="true" <c:if test="${searchIsAdmin==true}">checked</c:if>> Yes
                                 <input type="radio" name="searchIsAdmin" value="false" <c:if test="${searchIsAdmin==false}">checked</c:if>> No
                                 <input type="radio" name="searchIsAdmin" value="" <c:if test="${searchIsAdmin==null}">checked</c:if>> All
@@ -65,7 +64,6 @@
                     </div>
                 </div>
             </form>
-
             <c:if test="${empty employeeList}">
                 <div class="col-xs-10" style="margin-top:20px;">
                     <div class="row">
@@ -77,7 +75,6 @@
 
             </c:if>
             <c:if test="${not empty employeeList}">
-
                 <table class="table table-hover table-bordered">
                     <thead style="background-color: #bce8f1;">
                     <tr>
@@ -106,8 +103,6 @@
                     </c:forEach>
                     </tbody>
                 </table>
-
-
                 <div id="pagination" align="right">
                     <c:url value="//searchEmployee?searchName=${searchName}&searchAge=${searchAge}&searchIsAdmin=${searchIsAdmin}" var="prev">
                         <c:param name="page" value="${page-1}"/>
@@ -135,8 +130,6 @@
                         <a href='<c:out value="${next}" />' class="pn next">Next</a>
                     </c:if>
                 </div>
-
-
             </c:if>
         </div>
     </div>

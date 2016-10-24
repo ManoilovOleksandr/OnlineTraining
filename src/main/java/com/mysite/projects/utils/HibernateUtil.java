@@ -28,10 +28,6 @@ public class HibernateUtil {
         sessionFactory.getCurrentSession().delete(entity);
     }
 
-    public <T> void delete(Serializable id, Class<T> entityClass) {
-        T entity = fetchById(id, entityClass);
-        delete(entity);
-    }
 
     @SuppressWarnings("unchecked")
     public <T> List<T> fetchAll(Class<T> entityClass) {
@@ -40,6 +36,6 @@ public class HibernateUtil {
 
     @SuppressWarnings("unchecked")
     public <T> T fetchById(Serializable id, Class<T> entityClass) {
-        return (T)sessionFactory.getCurrentSession().get(entityClass, id);
+        return (T) sessionFactory.getCurrentSession().get(entityClass, id);
     }
 }
