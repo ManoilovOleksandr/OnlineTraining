@@ -40,7 +40,7 @@
                         <div class="col-md-10">
                             <div class="col-md-2"></div>
                             <div class="col-md-2">enter age:</div>
-                            <div class="col-md-3"><input type="number" min="1" step="1" name="searchAge"
+                            <div class="col-md-3"><input type="number" min="18" max="60" step="1" name="searchAge"
                                                          id="searchAge"></div>
                         </div>
                     </div>
@@ -133,6 +133,7 @@
                         </div>
                     </div>
                 </div>
+
             </c:if>
         </div>
     </div>

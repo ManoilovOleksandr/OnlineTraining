@@ -43,7 +43,7 @@
                 <div class="form-group">
                     <div class="control-label col-xs-3"><form:label path="age">Age</form:label></div>
                     <div class="col-xs-6">
-                        <form:input cssClass="form-control" path="age" value="${employeeObject.age}"/>
+                        <form:input type="number" min="18" max="60" step="1" cssClass="form-control" path="age" value="${employeeObject.age}"/>
                     </div>
                 </div>
 
